@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Etch-a-sketch</title>
+    <script src="jquery.js"></script>
+    <script src="underscore.js"></script>
+    <script src="utils.js"></script>
+    <script src="floodfill.js"></script>
+    <script src="posterize.js"></script>
+    <script src="process.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      #import {
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+      #canvas {
+        display: none;
+        background-color: #CCCCCC;
+        border: 1px solid #999999;
+        width: 400px;
+        height: 300px;
+      }
+    </style>
+  </head>
+  <body>
+
+<!--    <script>
+      $(function() {
+        var canvas = document.getElementById("canvas");
+        var ctx = canvas.getContext("2d");
+
+        ctx.strokeStyle = "#999999";
+        ctx.lineWidth = 1;
+
+        var pos = {
+          x: canvas.width / 2 | 0,
+          y: canvas.height / 2 | 0
+        }
+
+        var drawTo = function(x, y) {
+          ctx.beginPath();
+          ctx.moveTo(pos.x, pos.y);
+          ctx.lineTo(x, y);
+          ctx.stroke();
+          ctx.closePath();
+        }
+
+        var drawBy = function(x, y) {
+          ctx.beginPath();
+          ctx.moveTo(pos.x, pos.y);
+          pos.x += x;
+          pos.y += y;
+          ctx.lineTo(pos.x, pos.y);
+          ctx.stroke();
+          ctx.closePath();
+        }
+
+        setInterval(function() {
+          drawBy(10, 10);
+        }, 400);
+      });
+    </script>
+    -->
+  </body>
+</html>

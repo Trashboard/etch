@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Etch-a-sketch</title>
+    <script src="jquery.js"></script>
+    <script src="underscore.js"></script>
+    <script src="utils.js"></script>
+    <script src="wave.js"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      window.rowHeight = 4;
+      wave("/frame59.jpg", function(err, canvas, pixels) {
+        console.log(canvas);
+        //$("body").append(canvas);
+
+        var waveCanvas = document.createElement("canvas");
+        waveCanvas.width = canvas.width;
+        waveCanvas.height = canvas.height;
+        var ctx = waveCanvas.getContext("2d");
+
+        window.pixels = pixels;
+
+        ctx.lineStyle = "#000000";
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        for (var ry = 0; ry < pixels.length; ry++) {
+          var y = (ry * window.rowHeight) + (window.rowHeight / 2) | 0;
+          var rads = 0;
+          var dir = ry % 2;
+          for (var x = 0; x < pixels[0].length; x++) {
+            var rx = x;
+            if (dir === 1) {
+              rx = (pixels[0].length - 1) - x;
+            }
+
+            var c = pixels[ry][rx];
+            rads += (1 - (c / 255)) * 1.5;
+            if (c > 250) {
+              rads = 0;
+            }
+            ctx.lineTo(rx, y + (Math.sin(rads) * (window.rowHeight / 2)) * 1);
+          }
+        }
+        ctx.stroke();
+        $("body").append(waveCanvas);
+
+      });
+    </script>
+  </body>
+</html>
